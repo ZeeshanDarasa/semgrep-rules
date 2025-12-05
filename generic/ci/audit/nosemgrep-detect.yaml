@@ -1,0 +1,8 @@
+rules:
+  - id: detect-nosemgrep-suppressions
+    message: "An inline 'nosemgrep' suppression comment was detected. Ensure all suppressions are documented and necessary. If you need to add any suppression inform SQA team instead of adding it in your code"
+    severity: ERROR
+    languages:
+      - generic
+    patterns:
+      - pattern-regex: "([#/;*] ?|<!-- ?|-- ?)nosemgrep(:[\\w\\-.,]+)?( ?-->)?"
