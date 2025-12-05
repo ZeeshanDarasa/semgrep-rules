@@ -14,6 +14,7 @@ rules:
           regex: (?i)(post|put|delete|patch)
       - pattern-not-inside: "<form...>...{% csrf_token %}...</form>"
       - pattern-not-inside: "<form...>...{{ $VAR.csrf_token }}...</form>"
+      - pattern-not-regex: "th:[a-zA-Z]+" # Exclude Thymeleaf templates
     message: Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.
     languages: [generic]
     severity: WARNING
@@ -21,7 +22,7 @@ rules:
       category: security
       cwe: "CWE-352: Cross-Site Request Forgery (CSRF)"
       references:
-      - https://docs.djangoproject.com/en/4.2/howto/csrf/
+        - https://docs.djangoproject.com/en/4.2/howto/csrf/
       confidence: MEDIUM
       likelihood: MEDIUM
       impact: MEDIUM
